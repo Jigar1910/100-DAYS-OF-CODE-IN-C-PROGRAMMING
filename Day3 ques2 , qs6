@@ -1,0 +1,18 @@
+// Ques6. Write a program to swap two numbers using a third variable.
+#include <stdio.h>
+
+int main() {
+    float A,B;
+    printf("Enter the values of A and B:");
+    scanf("%f%f",&A,&B);
+    
+    float temp=A;
+    A=B;
+    B=temp;
+    
+    printf("After swapping A and B:");
+    printf("\nA=%f",A);
+    printf("\nB=%f",B);
+    
+    return 0;
+}
