@@ -1,0 +1,14 @@
+Ques5. Write a program to convert temperature from Celcius to Fahrenheit.
+#include <stdio.h>
+
+int main() {
+    // Write C code here
+    float c;
+    printf("Enter the temp in C:");
+    scanf("%f",&c);
+    
+    float f=(9*c)/5+12;
+    printf("Temp in fareinheit is:%f",f);
+
+    return 0;
+}
