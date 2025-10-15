@@ -1,0 +1,32 @@
+//
+#include <stdio.h>
+
+int main() {
+    int n;
+    int freq[10] = {0};   // to count each digit
+    int digit, max = 0, result = 0;
+
+    printf("Enter an integer: ");
+    scanf("%d", &n);
+
+    n = abs(n);  // handle negative numbers
+
+    // Count frequency of digits
+    while (n > 0) {
+        digit = n % 10;
+        freq[digit]++;
+        n /= 10;
+    }
+
+    // Find the digit with maximum frequency
+    for (int i = 0; i < 10; i++) {
+        if (freq[i] > max) {
+            max = freq[i];
+            result = i;
+        }
+    }
+
+    printf("Digit that occurs the most times: %d\n", result);
+
+    return 0;
+}
