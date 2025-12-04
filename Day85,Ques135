@@ -1,0 +1,30 @@
+//Assign explicit values starting from 10 and print them.
+#include <stdio.h>
+
+
+enum Status {
+    SUCCESS = 10,
+    FAILURE = 11,
+    TIMEOUT = 12
+};
+
+int main() {
+    enum Status currentStatus;
+    currentStatus = SUCCESS;
+    switch (currentStatus) {
+        case SUCCESS:
+            printf("SUCCESS (Value: %d): Operation completed successfully.\n", SUCCESS);
+            break;
+        case FAILURE:
+            printf("FAILURE (Value: %d): Operation failed.\n", FAILURE);
+            break;
+        case TIMEOUT:
+            printf("TIMEOUT (Value: %d): Operation timed out.\n", TIMEOUT);
+            break;
+        default:
+            printf("Unknown status.\n");
+            break;
+    }
+
+    return 0;
+}
