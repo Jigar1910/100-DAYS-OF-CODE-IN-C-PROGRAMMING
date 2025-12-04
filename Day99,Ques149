@@ -1,0 +1,42 @@
+//Use malloc() to allocate structure memory dynamically and print details.
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef enum { MANAGER, DEVELOPER, HR, INTERN } EmpType;
+
+typedef struct {
+    char name[50];
+    int id;
+    float salary;
+    EmpType type;
+    struct { int day, month, year; } joining_date;
+} Employee;
+
+int main() {
+
+    Employee *e = (Employee*)malloc(sizeof(Employee));
+    if(e == NULL) {
+        printf("Memory allocation failed!\n");
+        return 1;
+    }
+
+    
+    printf("Enter name: "); getchar();
+    fgets(e->name, 50, stdin);
+    printf("Enter ID, salary, type(0-3), joining date(day month year): ");
+    scanf("%d %f %d %d %d %d", &e->id, &e->salary, (int*)&e->type,
+          &e->joining_date.day, &e->joining_date.month, &e->joining_date.year);
+
+  
+    printf("\nEmployee Details:\n");
+    printf("Name: %s", e->name);
+    printf("ID: %d\n", e->id);
+    printf("Salary: %.2f\n", e->salary);
+    printf("Type: %d\n", e->type); // 0=Manager, 1=Developer etc.
+    printf("Joining Date: %02d-%02d-%04d\n", e->joining_date.day, e->joining_date.month, e->joining_date.year);
+
+    
+    free(e);
+
+    return 0;
+}
