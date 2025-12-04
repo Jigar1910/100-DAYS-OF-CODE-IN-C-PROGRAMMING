@@ -1,0 +1,24 @@
+//Create an enum for months and print how many days each month has.
+#include <stdio.h>
+
+int main() {
+    // Define enum for months
+    enum Months {JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE,
+                 JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER};
+
+    // Array holding number of days in each month
+    int days_in_month[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    // Array holding month names
+    const char *month_names[] = {"January", "February", "March", "April", "May", "June",
+                                 "July", "August", "September", "October", "November", "December"};
+
+    // Print each month and its number of days
+    for (enum Months month = JANUARY; month <= DECEMBER; month++) {
+        printf("%s has %d days\n", month_names[month], days_in_month[month]);
+    }
+
+    return 0;
+}
+ 
+
