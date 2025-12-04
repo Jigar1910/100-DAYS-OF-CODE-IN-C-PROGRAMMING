@@ -1,0 +1,48 @@
+//Write a function that accepts a structure as parameter and prints its members.
+
+#include <stdio.h>
+
+// Define an enum for Gender
+typedef enum {
+    MALE,
+    FEMALE,
+    OTHER
+} Gender;
+
+// Define a structure Person
+typedef struct {
+    char name[50];
+    int age;
+    Gender gender;
+} Person;
+
+// Function to print Person details
+void printPerson(Person p) {
+    printf("Name: %s\n", p.name);
+    printf("Age: %d\n", p.age);
+
+    printf("Gender: ");
+    switch(p.gender) {
+        case MALE:
+            printf("Male\n");
+            break;
+        case FEMALE:
+            printf("Female\n");
+            break;
+        case OTHER:
+            printf("Other\n");
+            break;
+        default:
+            printf("Unknown\n");
+    }
+}
+
+int main() {
+    // Create a Person
+    Person p1 = {"Alice", 25, FEMALE};
+
+    // Call function to print Person details
+    printPerson(p1);
+
+    return 0;
+}
