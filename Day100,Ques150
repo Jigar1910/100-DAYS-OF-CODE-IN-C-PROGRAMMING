@@ -1,0 +1,39 @@
+//Use pointer to struct to modify and display data using -> operator.
+#include <stdio.h>
+
+typedef enum { MANAGER, DEVELOPER, HR, INTERN } EmpType;
+
+typedef struct {
+    char name[50];
+    int id;
+    float salary;
+    EmpType type;
+} Employee;
+
+int main() {
+    Employee emp;
+    Employee *ptr = &emp;  // Pointer to struct
+
+    // Modify data using -> operator
+    printf("Enter name: "); getchar();
+    fgets(ptr->name, 50, stdin);
+
+    printf("Enter ID, salary, type(0-3): ");
+    scanf("%d %f %d", &ptr->id, &ptr->salary, (int*)&ptr->type);
+
+    // Display data using -> operator
+    printf("\nEmployee Details:\n");
+    printf("Name: %s", ptr->name);
+    printf("ID: %d\n", ptr->id);
+    printf("Salary: %.2f\n", ptr->salary);
+    printf("Type: ");
+    switch(ptr->type) {
+        case MANAGER:   printf("Manager\n"); break;
+        case DEVELOPER: printf("Developer\n"); break;
+        case HR:        printf("HR\n"); break;
+        case INTERN:    printf("Intern\n"); break;
+        default:        printf("Unknown\n");
+    }
+
+    return 0;
+}
