@@ -1,0 +1,32 @@
+//Store employee data in a binary file using fwrite() and read using fread().
+#include <stdio.h>
+
+typedef enum { MANAGER, DEVELOPER, HR, INTERN } EmpType;
+
+typedef struct {
+    char name[50];
+    int id;
+    float salary;
+    EmpType type;
+    struct { int day, month, year; } joining_date;
+} Employee;
+
+int main() {
+    FILE *fp = fopen("emp.dat", "wb+");
+    Employee e;
+    printf("Name: "); getchar();
+    fgets(e.name, 50, stdin);
+    printf("ID Salary Type(0-3) Day Month Year: ");
+    scanf("%d %f %d %d %d %d", &e.id, &e.salary, (int*)&e.type,
+          &e.joining_date.day, &e.joining_date.month, &e.joining_date.year);
+
+    fwrite(&e, sizeof(e), 1, fp);
+    rewind(fp);
+    fread(&e, sizeof(e), 1, fp);
+    printf("\nEmployee: %sID:%d Salary:%.2f Type:%d Date:%02d-%02d-%04d\n",
+           e.name, e.id, e.salary, e.type,
+           e.joining_date.day, e.joining_date.month, e.joining_date.year);
+
+    fclose(fp);
+    return 0;
+}
